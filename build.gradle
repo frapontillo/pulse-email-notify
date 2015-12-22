@@ -17,6 +17,7 @@
 plugins {
     id 'java'
     id 'maven'
+    id "com.github.frapontillo.switchdependencies" version "0.0.1-alpha.0"
 }
 
 sourceCompatibility = 1.8
@@ -32,7 +33,16 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.frapontillo:pulse:0.0.1'
-    compile 'com.github.frapontillo:crowd-pulse-data-java:0.0.1'
-    compile group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+    compile 'org.apache.commons:commons-email:1.4'
+}
+
+switchDependencies {
+    develop {
+        truthy = {
+            compile project(':pulse')
+        }
+        falsy = {
+            compile 'com.github.frapontillo:pulse:0.0.2'
+        }
+    }
 }
