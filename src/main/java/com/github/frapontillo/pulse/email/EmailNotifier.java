@@ -40,6 +40,10 @@ public class EmailNotifier extends IPlugin<Object, Object, EmailNotifierConfig> 
         return PLUGIN_NAME;
     }
 
+    @Override public IPlugin<Object, Object, EmailNotifierConfig> getInstance() {
+        return new EmailNotifier();
+    }
+
     @Override public EmailNotifierConfig getNewParameter() {
         return new EmailNotifierConfig();
     }
